@@ -22,7 +22,7 @@ namespace ProgressBar.Processes
 
         protected void Log(string message)
         {
-            _clients.All.log($"[{DateTime.Now.ToString("HH:mm:ss.fff")}] {ProcessName}: {message}");
+            _clients.All.log($"[{DateTime.Now.ToString("HH:mm:ss")}] {ProcessName}: {message}");
         }
 
         public bool IsSuccess { get; private set; }

@@ -13,51 +13,72 @@
     <title>Index</title>
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <style type="text/css">
-        .progress {
+        .bun-margin-top {
             margin-top: 20px;
+        }
+
+        .panel .panel-body {
+            height: 180px;
+            overflow: auto;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="row">
+        <div class="row bun-margin-top">
             <div class="progress">
-                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-                    <span class="sr-only">45% Complete</span>
-                </div>
+                <div id="ProgressBar" class="progress-bar progress-bar-striped active" role="progressbar" style="width: 0%;"></div>
             </div>
         </div>
-        <div class="row text-center">
-            <button type="button" id="start" class="btn btn-success">Start</button>
-        </div>
-        <div class="row">
 
+        <div class="row text-center">
+            <button type="button" id="Start" class="btn btn-success">Start</button>
+            <button type="button" id="Successed" class="btn btn-default" disabled style="display: none;">All Successed !</button>
+        </div>
+
+        <div class="row bun-margin-top">
+            <div class="panel panel-default">
+                <div class="panel-heading">Output</div>
+                <div id="OutputPanel" class="panel-body"></div>
+            </div>
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="~/Scripts/jquery.signalR-2.2.2.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.2.2.js"></script>
     <script src="~/signalr/hubs"></script>
 
     <script>
         $(function () {
             var process = $.connection.processHub;
+
             process.client.log = function (message) {
                 console.log(message);
+                $("#OutputPanel").prepend("<p>" + message + "</p>");
             };
 
-            process.client.pull = function (processName) {
-                console.log(processName);
-                process.server.getProgress(processName);
+            process.client.pull = function () {
+                process.server.getProgress();
             };
 
             process.client.refreshProgress = function (progressInfo) {
                 console.log(progressInfo);
+
+                $("#ProgressBar").css("width", progressInfo.progress + "%");
+
+                if (progressInfo.isAllSuccessed) {
+                    $("#Start").hide();
+                    $("#Successed").show();
+                }
             };
 
-            $.connection.hub.start().done(function () {
-                process.server.begin();
+            $("#Start").click(function () {
+                $.connection.hub.start().done(function () {
+                    process.server.begin();
+                });
+
+                $(this).prop("disabled", true);
             });
         });
     </script>

@@ -14,12 +14,12 @@ namespace ProgressBar.Processes
 
         public override void Begin()
         {
-            base.Log("Start to do other thing...");
+            base.Log("Starting...");
 
-            Thread.Sleep(4000);
+            Thread.Sleep(2000);
 
             base.Finish();
-            base.Log("Finish do other thing!");
+            base.Log("Finished!");
         }
     }
 }
