@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SignalR", "SignalR", "{E00A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgressBar", "src\ASPNET\SignalR\ProgressBar\ProgressBar.csproj", "{87A738A1-1C3D-44C5-976E-631F67C56FB8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OwinSelfHostLogging", "src\ASPNET\WebApi\OwinSelfHostLogging\OwinSelfHostLogging.csproj", "{8092EC15-1D4E-409E-B0D8-5DD5247FC5CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{87A738A1-1C3D-44C5-976E-631F67C56FB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87A738A1-1C3D-44C5-976E-631F67C56FB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87A738A1-1C3D-44C5-976E-631F67C56FB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8092EC15-1D4E-409E-B0D8-5DD5247FC5CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8092EC15-1D4E-409E-B0D8-5DD5247FC5CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8092EC15-1D4E-409E-B0D8-5DD5247FC5CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8092EC15-1D4E-409E-B0D8-5DD5247FC5CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,5 +48,6 @@ Global
 		{C31C2570-951D-4505-B615-CF8AA5335A19} = {5D8ED045-A176-454A-BBBF-F0B6C510ADC0}
 		{E00AC81F-4A94-48D3-86A0-7F71CF0DCFA9} = {895A2F0F-B723-48E7-A036-A8236F4408AE}
 		{87A738A1-1C3D-44C5-976E-631F67C56FB8} = {E00AC81F-4A94-48D3-86A0-7F71CF0DCFA9}
+		{8092EC15-1D4E-409E-B0D8-5DD5247FC5CC} = {5D8ED045-A176-454A-BBBF-F0B6C510ADC0}
 	EndGlobalSection
 EndGlobal
