@@ -17,7 +17,6 @@ namespace ReturnCustomErrorResponse.Attributes
 
             actionExecutedContext.Response = request.CreateResponse(HttpStatusCode.InternalServerError, new ErrorResponse
             {
-                Code = "1001",
                 Message = String.Join(" -> ", exceptions.Select(ex => ex.Message))
             });
         }
